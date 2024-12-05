@@ -4,10 +4,14 @@ This project is Flask based forum web application where you can authenticate, cr
 
 ### Instalation
   ```python 
-      py -m venv venv #creating venv
-      venv/scripts/activate #activating venv
+      python -m venv venv #creating venv for Windows
+      python3 -m venv venv #creating venv for MacOS/Linux
+      ---------------
+      venv/scripts/activate # windows
+      source venv/bin/activate # macOS/Linux
+
       pip install -r requirements.txt #installing packages
-      py run.py #running app 
+      py run.py #running app and creating instance folder
       flask db upgrade #adding models in db
   ```
   
