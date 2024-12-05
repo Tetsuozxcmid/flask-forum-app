@@ -2,7 +2,7 @@ Project Overview
 ----------------------
 This project is Flask based forum web application where you can authenticate, create discussion rooms, post comments, view the profiles of other users.  
 
-### Instalation
+### Installation
   ```python 
       python -m venv venv #creating venv for Windows
       python3 -m venv venv #creating venv for MacOS/Linux
