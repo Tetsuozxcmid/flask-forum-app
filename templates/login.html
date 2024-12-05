@@ -1,0 +1,24 @@
+{%extends 'base.html' %}
+{%block title%} Signup {%endblock%}
+
+{%block content %}
+<h1>Login </h1>
+
+{% if current_user.is_authenticated %}
+    <br>
+    <br>
+{%else%}
+    
+    
+{%endif%}
+<form action="{{url_for('login')}}" method="POST">
+    <input type="text" name="username" placeholder="username" required="required" class="form-control"><br>
+    <input type="text" name="password" placeholder="password" required="required" class="form-control"><br>
+    <input type="submit" value="Enter" class="btn btn-outline-primary">
+</form>
+<a href="/" class="btn btn-danger">back</a>
+
+
+
+
+{%endblock%}
