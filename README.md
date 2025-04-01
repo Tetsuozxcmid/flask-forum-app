@@ -42,6 +42,37 @@ This project is Flask based forum web application where you can authenticate, cr
 5. Access control
   - Restricted access to content such as rooms, commenting, and profile viewing to authenticated users only
   - Redirects unauthenticated users to the login page
+
+ ### Authentication Routes
+| Route | Method | Description |
+|--------|--------|-------------|
+| `/signup` | GET, POST | Register a new user |
+| `/login` | GET, POST | Authenticate and log in |
+| `/logout` | GET, POST | Log out the user |
+
+### Room Routes
+| Route | Method | Description |
+|--------|--------|-------------|
+| `/createroom` | POST | Create a new room |
+| `/rooms` | GET | List all available chat rooms |
+| `/room/<int:id>` | GET, POST | View a specific chat room and add a comment |
+| `/delete-room/<room_id>` | GET | Delete a chat room if authorized |
+
+### Profile Routes
+| Route | Method | Description |
+|--------|--------|-------------|
+| `/user/<username>` | GET | View another user's profile |
+| `/profile/<name>` | GET | View current user's profile |
+
+### Comment Routes
+### Profile Routes
+| Route | Method | Description |
+|--------|--------|-------------|
+| `/delete-comment/<comment_id>` | GET | Delete a comment if authorized |
+
+
+
+
   
 Tech part
 ----------------------
