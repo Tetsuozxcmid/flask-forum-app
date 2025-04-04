@@ -1,11 +1,14 @@
 from flask import render_template, request, redirect, url_for,flash
+from flask import Flask, render_template, request
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
 from sqlalchemy import delete
 from flask_login import login_user, logout_user, current_user, login_required
 from models import User,Room,Comment
 from werkzeug.security import generate_password_hash
 
+users = {}
 
-def register_routes(app, db, bcrypt):
+def register_routes(app, db, bcrypt, socketio):
     @app.route('/')
     def index():
         return render_template('index.html')
@@ -22,6 +25,7 @@ def register_routes(app, db, bcrypt):
             user = User(username=username,password=hashed_password)
             db.session.add(user)
             db.session.commit()
+            login_user(user)
             return redirect(url_for('index'))
 
     #user authorization via session
@@ -136,6 +140,35 @@ def register_routes(app, db, bcrypt):
         db.session.commit()
         
         return render_template("com_deleted.html")
+    
+    @app.route("/webchat", methods=['GET', 'POST'])
+    @login_required  
+    def webchat():
+        return render_template('sockets.html', username=current_user.username) 
+
+    @socketio.on("connect")
+    def handle_connect():
+        print(f"Client connected: {request.sid}")
+
+    @socketio.on('join')
+    def handle_join(data): 
+        username = data['username']
+        users[request.sid] = username  
+        join_room(username) 
+        emit("message", f"{username} joined the chat!", room=username)
+        print(f"{username} has joined the chat")
+
+    @socketio.on('message')
+    def handle_message(data):
+        username = users.get(request.sid, "Anonymous") 
+        emit("message", f"{username}: {data}", broadcast=True) 
+
+    @socketio.on('disconnect')
+    def handle_disconnect():
+        username = users.pop(request.sid, "Anonymous")
+        emit("message", f"{username} left the chat", broadcast=True)
+    
+
     
     
     

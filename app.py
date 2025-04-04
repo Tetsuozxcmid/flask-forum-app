@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_login import UserMixin
+from flask_socketio import SocketIO
 
 db = SQLAlchemy()
 login_manager = LoginManager()  
@@ -14,9 +15,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./forum_app.db'
     app.secret_key = 'SOME KEY'
     db.init_app(app)
-
     login_manager.init_app(app)  
-
+    socketio = SocketIO(app)
     from models import User
     
     @login_manager.user_loader
@@ -26,7 +26,7 @@ def create_app():
     bcrypt.init_app(app)  
 
     from routes import register_routes
-    register_routes(app, db, bcrypt)
+    register_routes(app, db, bcrypt,socketio)
 
     migrate = Migrate(app, db,render_as_batch=True)
 
