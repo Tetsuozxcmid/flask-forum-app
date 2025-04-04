@@ -2,14 +2,14 @@
 
 {% block content %}
 <title>Chat</title>
-<div class="card mb-3 w-50 mx-auto" style="padding: 25px;"> <!-- Added mx-auto for centering -->
-    <div class="card-body"> <!-- Added a card-body div -->
-        <h2 class="card-title">Flask WebSocket Chat</h2>  <!-- Moved H2 tag here and made it card-title -->
-        <div class="mb-3"> <!-- Corrected Class Name and increased margin -->
-            <input id="msg" type="text" class="form-control" placeholder="Enter your message"> <!-- Added form-control class for Bootstrap styling -->
+<div class="card mb-3 w-50 mx-auto" style="padding: 25px;"> 
+    <div class="card-body"> 
+        <h2 class="card-title">Flask WebSocket Chat</h2>  
+        <div class="mb-3"> 
+            <input id="msg" type="text" class="form-control" placeholder="Enter your message"> 
         </div>
-        <button onclick="sendMessage()" class="btn btn-primary">Send</button> <!-- Added Bootstrap button classes -->
-        <div id="messages" class="mt-3"></div> <!-- Added margin-top for spacing -->
+        <button onclick="sendMessage()" class="btn btn-primary">Send</button> 
+        <div id="messages" class="mt-3"></div> 
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
