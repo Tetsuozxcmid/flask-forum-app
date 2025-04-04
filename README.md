@@ -1,6 +1,6 @@
 Project Overview
 ----------------------
-This project is Flask based forum web application where you can authenticate, create discussion rooms, post comments, view the profiles of other users.  
+This project is Flask based forum with webchat using Sockets,web application where you can authenticate, create discussion rooms, post comments, view the profiles of other users.  
 
 ### Installation
   ```python 
