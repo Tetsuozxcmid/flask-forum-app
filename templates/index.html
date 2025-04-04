@@ -1,69 +1,80 @@
 {% extends 'base.html' %}
-{%block title%}  {%endblock%}
+{% block title %}{% endblock %}
 
-{%block content %}
+{% block content %}
 
 <div class="container mt-4">
-  {% if current_user.is_authenticated %}
-  
-  
-    <div class="alert" >
-      <h3>Hello , <strong><code class="name">{{current_user.username}}</code></strong></h3>
-      <a href="{{url_for('logout')}}">Logout</a>
+    {% if current_user.is_authenticated %}
+
+    <div class="alert">
+        <h3>Hello, <strong>
+                <code class="name">{{ current_user.username }}</code>
+            </strong></h3>
+        <a href="{{ url_for('logout') }}">Logout</a>
     </div>
-    
-  
-  
-      <br>
-      <hr>
-  
-      
-      <div class="card" style="padding:15px;">
-        <h3>Create room</h3>
-      <form action="{{url_for('create')}}" method="POST">
-          <div class="input-group mb-3">
-              
-              <input type="text" class="form-control" name="room_name" placeholder="room name" aria-label="Room name" aria-describedby="basic-addon1">
-            </div>
-            
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="room_description" placeholder="description" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            </div>
-          
-            <div class="input-group">
-              <span class="input-group-text">Type...</span>
-              <textarea class="form-control" name="room_text" aria-label="With textarea" wrap="soft"></textarea>
-  
-            </div>
-            <input type="submit" value="Create" class="btn btn-outline-primary">
-      </form>
-      <a href="{{url_for('show')}}">Комнаты</a>
-      </div>
-  {%else%}
 
 
-  <div class="container mt-5 d-flex flex-column align-items-center">
-    <h3 class="mb-4 text-center">Hello! Join our <p class="name"> forum </p></h3>
-    <div class="d-flex gap-3">
-        
-        <a href="{{url_for('login')}}" class="btn btn-outline-info text-white">
-            Login
-        </a>
-        
-        <a href="{{url_for('signup')}}" class="btn btn-primary text-white">
-            Signup
-        </a>
+    <br>
+    <hr>
+
+    <div class="card" style="padding:15px;">
+        <div class="card-body">
+            <h5 class="card-title">Create room</h5>
+            <form action="{{ url_for('create') }}" method="POST">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="room_name" placeholder="room name"
+                        aria-label="Room name" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="room_description" placeholder="description"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+
+                <div class="mb-3">
+                    <label for="room_text" class="form-label">Type...</label>
+                    <textarea class="form-control" name="room_text" aria-label="With textarea" wrap="soft"
+                        id="room_text"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Create</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <a href="{{ url_for('show') }}" class="card-link">Rooms</a>
+        </div>
     </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">WEBchat</h5>
+            <p class="card-text">Join our web chat and connect with other users!</p>
+            <a href="{{ url_for('webchat') }}" class="btn btn-primary">Join</a>
+        </div>
+    </div>
+    {% else %}
+
+
+    <div class="container mt-5 d-flex flex-column align-items-center">
+        <h3 class="mb-4 text-center">Hello! Join our
+            <p class="name"> forum </p>
+        </h3>
+        <div class="d-flex gap-3">
+
+            <a href="{{ url_for('login') }}" class="btn btn-outline-info text-white">
+                Login
+            </a>
+
+            <a href="{{ url_for('signup') }}" class="btn btn-primary text-white">
+                Signup
+            </a>
+        </div>
+    </div>
+
+
+    {% endif %}
+
 </div>
 
-      
-  {%endif%}
-
-</div>
-
-
-
-
-{%endblock%}
+{% endblock %}
 
 
