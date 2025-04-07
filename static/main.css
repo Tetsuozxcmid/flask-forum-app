@@ -18,6 +18,12 @@ body {
     transform:scaleY(1.05);
 
 }
+
+.bg-dark-blue {
+    background-color: #255681;  
+  }
+
+
 hr{
     filter: blur();
 }

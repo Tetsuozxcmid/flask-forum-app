@@ -6,8 +6,8 @@
 <hr>
 <div class="container my-4">
     <div class="card">
-        <div class="card-header bg-primary text-white text-center py-3">
-            <h1 class="card-title mb-0">{{ room.room_name }}</h1>
+        <div class="card-header bg-dark-blue text-white text-center py-3">
+            <h1 class="card-title mb-3">{{ room.room_name }}</h1>
         </div>
         <div class="card-body">
             <p class="card-text text-muted fs-5">{{ room.room_topic }}</p>
@@ -26,7 +26,10 @@
     
     {% if current_user.is_authenticated %}
     <div class="card mb w-50" style="padding: 25px;">
-        <div class="card-header bg-primary "><h3>Leave the comment </h3></div>
+        <div class="card-header bg-dark-blue text-white">
+            <h3 class="mb-0">Leave a comment</h3>
+        </div>
+        
         <div class="card-body">
             <form method="POST">
                 <input type="text" name="comment" required="required" class="form-control" placeholder=". . ."><br>
