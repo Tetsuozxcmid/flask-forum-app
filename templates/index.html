@@ -3,6 +3,7 @@
 
 {% block content %}
 
+
 <div class="container mt-4">
     {% if current_user.is_authenticated %}
 
@@ -69,11 +70,23 @@
             </a>
         </div>
     </div>
-
+    
 
     {% endif %}
 
 </div>
+
+<footer class="footer mt-5 bg-dark py-4">
+    <div class="container">
+        
+
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <p class="text-muted mb-0">&copy; 2025 CRNForum. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer> 
 
 {% endblock %}
 
