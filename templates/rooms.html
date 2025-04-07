@@ -16,7 +16,6 @@
                         <div class="card-body">
                             <strong>{{room.room_name}}</strong>
                             <p>Room description: {{room.room_desc}}</p>
-                            <p>Owner: {{room.user_id}}</p>
                             <button class="btn btn-primary">
                                 <a href="{{ url_for('room', id=room.room_id) }}" class="text-white">Enter</a>
                             </button>
